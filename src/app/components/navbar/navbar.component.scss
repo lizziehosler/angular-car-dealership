@@ -1,0 +1,33 @@
+.navbar {
+  height: 85px;
+  background: #000000 0% 0% no-repeat padding-box !important;
+  box-shadow: 0px 3px 19px #00000041;
+  .nav-link {
+    color: white !important;
+    text-transform: uppercase;
+  }
+}
+
+.btn-cars-navbar {
+  border-color: #587291;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 25px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-cars-navbar:hover,
+.btn-cars-navbar:not(:disabled):not(.disabled):active {
+  border-width: 3px;
+  background: transparent !important;
+  border-color: #587291;
+}
+
+.vl-blue:after {
+  content: '|';
+  color: #587291;
+  height: 20px;
+}
