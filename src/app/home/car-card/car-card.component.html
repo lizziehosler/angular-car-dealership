@@ -1,0 +1,16 @@
+<div *ngIf="car" class="card">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img class="img img-fluid" [src]="carImg" (error)="setDefaultPic()" />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{car.year}} {{car.make}} {{car.model}}</h5>
+          <h5 class="card-price">{{car.price | currency}}</h5>
+          <div style="clear: both;"></div>
+          <p class="card-mileage">{{car.mileage}} miles</p>
+          <p class="card-text">{{car.notes}}</p>
+        </div>
+      </div>
+    </div>
+</div>
