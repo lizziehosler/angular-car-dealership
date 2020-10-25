@@ -10,6 +10,7 @@ export class Car {
   price: number
   updated_at: string
   year: number
+  mileage: number
   constructor({
     color = '',
     created_at = '',
@@ -22,6 +23,7 @@ export class Car {
     price = null,
     updated_at = '',
     year = null,
+    mileage = null,
     ...rest
   }) {
     Object.assign(this, rest)
@@ -35,6 +37,7 @@ export class Car {
     this.notes = notes,
     this.price = price,
     this.updated_at = updated_at,
-    this.year = year
+    this.year = year,
+    this.mileage = mileage
   }
 }

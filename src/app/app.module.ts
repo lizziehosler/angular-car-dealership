@@ -14,14 +14,16 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { CarCardComponent } from './home/car-card/car-card.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    CarCardComponent
   ],
   imports: [
     BrowserModule,
