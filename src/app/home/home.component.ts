@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../shared/services/local-storage.service';
 import { Car } from './../shared/models/car';
 import { CarService } from './../shared/services/car.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,11 +12,17 @@ export class HomeComponent implements OnInit {
   cars: Car[] = []
 
   constructor(
-    private carService: CarService
+    private carService: CarService,
+    private storageService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
     this.retrieveAllCars()
+    this.setMyEmailInStorage()
+  }
+
+  setMyEmailInStorage() {
+    this.storageService.setItem('myEmail', 'lizzie.hosler@gmail.com')
   }
 
   retrieveAllCars() {
@@ -23,7 +30,6 @@ export class HomeComponent implements OnInit {
       if (cars) {
         this.cars = cars
       }
-      debugger
 
     }, error => {
       if (error) {
