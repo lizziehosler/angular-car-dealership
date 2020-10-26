@@ -1,24 +1,117 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
-  <a class="navbar-brand" href="#">
+<nav *ngIf="currentUser" class="navbar navbar-expand navbar-light bg-light">
+  <a class="navbar-brand" [routerLink]="['/home']">
+    <img src="./assets/images/the-car-place-black-bg.png" width="85" height="85" />
+  </a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link d-none d-lg-block" [routerLink]="['/home']">
+          <button class="btn btn-outline-primary btn-cars-navbar">View All Cars
+            <fa-icon
+            [icon]="['fas', 'car-alt']"
+            size="m"
+            class="ml-2 text-white"
+          ></fa-icon>
+          </button>
+        </a>
+      </li>
+      <li class="nav-item active icon d-block d-lg-none">
+        <a class="nav-link" [routerLink]="['/home']">
+          <fa-stack>
+            <fa-icon
+              [icon]="['fas', 'circle']"
+              class="text-cars-blue"
+              stackItemSize="2x"
+            ></fa-icon>
+            <fa-icon
+            [icon]="['fas', 'car-alt']"
+            class="text-white"
+            stackItemSize="1x"
+          ></fa-icon>
+          </fa-stack>
+        </a>
+      </li>
+      <li class="nav-item mr-5 d-none d-lg-block">
+        <a class="nav-link" [routerLink]="['/cars/new']">
+          <button class="btn btn-outline-primary btn-cars-navbar">
+            Add New Car
+            <fa-icon
+              [icon]="['fas', 'plus']"
+              size="sm"
+              class="ml-2 text-white"
+            ></fa-icon>
+          </button>
+        </a>
+      </li>
+      <li class="nav-item icon active d-block d-lg-none">
+        <a class="nav-link" [routerLink]="['/cars/new']">
+          <fa-stack>
+            <fa-icon
+            [icon]="['fas', 'circle']"
+            class="text-cars-blue"
+            stackItemSize="2x"
+          ></fa-icon>
+            <fa-icon
+              [icon]="['fas', 'plus']"
+              class="text-white"
+              stackItemSize="1x"
+            ></fa-icon>
+          </fa-stack>
+        </a>
+      </li>
+      <li class="nav-item mt-2">
+        <a class="nav-link text-uppercase"> Hi, {{ currentUser.nickname }}! </a>
+      </li>
+      <li class="nav-item mt-2">
+        <a class="nav-link text-uppercase vl-blue"></a>
+      </li>
+      <li class="nav-item mt-2">
+        <a class="nav-link text-uppercase" (click)="logoutUser()"> SIGN OUT </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<nav *ngIf="!currentUser" class="navbar navbar-expand navbar-light bg-light">
+  <a class="navbar-brand" [routerLink]="['/home']">
     <img src="./assets/images/the-car-place-black-bg.png" width="85" height="85" />
   </a>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">
-          <button class="btn btn-outline-primary btn-cars-navbar">All Cars
-
+      <li class="nav-item active mr-5 d-none d-lg-block">
+        <a class="nav-link" [routerLink]="['/home']">
+          <button class="btn btn-outline-primary btn-cars-navbar">View All Cars
+            <fa-icon
+            [icon]="['fas', 'car-alt']"
+            size="m"
+            class="ml-2 text-white"
+          ></fa-icon>
           </button>
         </a>
       </li>
-      <li class="nav-item mt-2">
-        <a class="nav-link" href="#">Sign In</a>
+      <li class="nav-item icon active d-block d-lg-none">
+        <a class="nav-link" [routerLink]="['/home']">
+          <fa-stack>
+            <fa-icon
+              [icon]="['fas', 'circle']"
+              class="text-cars-blue"
+              stackItemSize="2x"
+            ></fa-icon>
+            <fa-icon
+            [icon]="['fas', 'car-alt']"
+            class="text-white"
+            stackItemSize="1x"
+          ></fa-icon>
+          </fa-stack>
+        </a>
       </li>
       <li class="nav-item mt-2">
-        <a class="nav-link vl-blue" href="#"></a>
+        <a class="nav-link text-uppercase" [routerLink]="['/login']">Sign In</a>
       </li>
       <li class="nav-item mt-2">
-        <a class="nav-link" href="#">Sign Up</a>
+        <a class="nav-link text-uppercase vl-blue"></a>
+      </li>
+      <li class="nav-item mt-2">
+        <a class="nav-link text-uppercase" [routerLink]="['/signup']">Sign Up</a>
       </li>
     </ul>
   </div>

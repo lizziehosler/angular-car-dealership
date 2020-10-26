@@ -2,3 +2,85 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+$blue: #587291;
+
+
+// Overiding Boostrap Card Styles
+.card {
+  box-shadow: 0px 3px 19px #0000000d;
+  border-radius: 5px;
+  border: none;
+}
+// Overiding Bootstrap Button Styles
+.btn-primary {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: white;
+  background: $blue;
+  border: $blue;
+  border-radius: 25px;
+  min-width: 100px;
+  min-height: 40px;
+}
+.btn-primary:hover,
+.btn-primary:not(:disabled):not(.disabled):active {
+  color: white;
+  background: darken($blue, 10%);
+  border: darken($blue, 10%);
+  border-radius: 25px;
+}
+.btn-outline-primary {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: $blue;
+  background: transparent;
+  border-color: $blue;
+  border-radius: 25px;
+  border-width: 2px;
+  min-width: 100px;
+  min-height: 40px;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:not(:disabled):not(.disabled):active {
+  color: darken($blue, 10%);
+  background: transparent;
+  border-color: darken($blue, 10%);
+  border-radius: 25px;
+}
+
+// input overide
+input,
+.form-control {
+  border-radius: 25px !important;
+}
+
+// overides for small devices
+@media (max-width: 576px) {
+  .form {
+    max-width: 95vw;
+  }
+}
+
+// overides for small devices
+@media (min-width: 576px) {
+  .btn-primary,
+  .btn-outline-primary {
+    min-width: 150px;
+    min-height: 40px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}

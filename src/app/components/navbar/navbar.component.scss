@@ -6,6 +6,7 @@
     color: white !important;
     text-transform: uppercase;
   }
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn-cars-navbar {
@@ -19,15 +20,18 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.btn-cars-navbar:hover,
-.btn-cars-navbar:not(:disabled):not(.disabled):active {
-  border-width: 3px;
-  background: transparent !important;
-  border-color: #587291;
+.btn-cars-navbar:hover {
+  color: white;
+  background: #587291 !important;
+  border-color: white;
 }
 
 .vl-blue:after {
   content: '|';
   color: #587291;
   height: 20px;
+}
+
+.text-cars-blue {
+  color: #587291;
 }
