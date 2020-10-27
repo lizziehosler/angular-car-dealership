@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Car } from './../../shared/models/car';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
@@ -9,7 +10,9 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 export class CarCardComponent implements OnInit, OnChanges {
   @Input() car: Car
   carImg: string
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +25,10 @@ export class CarCardComponent implements OnInit, OnChanges {
 
   setDefaultPic() {
     this.carImg = 'assets/images/car-placeholder.svg'
+  }
+
+  routeToViewCar(id: number) {
+    this.router.navigate([`/cars/${id}`])
   }
 
 }

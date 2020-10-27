@@ -1,0 +1,12 @@
+<div class="container mb-3">
+  <div class="row mt-5" *ngIf="car">
+    <div class="col-12 mt-5 mb-5">
+      <div *ngIf="car.id" class="card p-4">
+       <p>{{car.model}}</p>>
+    </div>
+  </div>
+  <div class="mt-5 mb-5" *ngIf="!car">
+    <h4>.... Loading</h4>
+  </div>
+</div>
+

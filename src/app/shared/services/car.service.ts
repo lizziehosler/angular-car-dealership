@@ -19,4 +19,9 @@ export class CarService {
    getAllCars(): Observable<Car[]> {
      return this.http.get<Car[]>(`${this.carApi}/index`)
    }
+
+   getCarById(params) {
+     debugger
+     return this.http.get<any>(`${this.carApi}/getCarById?id=${params.id}`)
+   }
 }
