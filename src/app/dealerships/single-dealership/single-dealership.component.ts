@@ -1,9 +1,9 @@
+import { Dealership } from './../../shared/models/dealership';
+import { DealershipService } from './../../dealership.service';
 import { UserService } from './../../shared/services/user.service';
 import { User } from './../../shared/models/user';
 import { map, timestamp } from 'rxjs/operators';
-import { Dealership } from './../../shared/models/dealership';
 import { Car } from './../../shared/models/car';
-import { CarService } from './../../shared/services/car.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -11,41 +11,40 @@ import { Subscription } from 'rxjs';
 
 
 @Component({
-  selector: 'app-single-car',
-  templateUrl: './single-car.component.html',
-  styleUrls: ['./single-car.component.scss']
+  selector: 'app-single-dealership',
+  templateUrl: './single-dealership.component.html',
+  styleUrls: ['./single-dealership.component.scss']
 })
-export class SingleCarComponent implements OnInit, OnDestroy {
-  car: Car
-  carImg: string
+export class SingleDealershipComponent implements OnInit, OnDestroy {
   dealership: Dealership
+  dealerImg: string
   currentUser: User
   private subs = new Subscription()
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private carService: CarService,
+    private dealershipService: DealershipService,
     private userService: UserService
   ) {
     this.currentUser = this.userService.currentUserValue
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(car => {
-      if (car && car.id) {
-        this.retrieveCarById(car.id)
+    this.route.params.subscribe(dealership => {
+      if (dealership && dealership.id) {
+        this.retrieveDealershipById(dealership.id)
       }
 
     })
   }
-  retrieveCarById(id: number) {
+  retrieveDealershipById(id: number) {
     const params = { id: id }
     console.log(params);
     this.subs.add(
-      this.carService.getCarById(params).subscribe(data => {
+      this.dealershipService.getDealershipById(params).subscribe(data => {
         if (data) {
-          this.car = new Car(data)
-          this.carImg = this.car.image
+          this.dealership = new Dealership(data)
+          this.dealerImg = this.dealership.image
           // this.dealership = data.dealership
         }
       }, error => {
@@ -57,19 +56,19 @@ export class SingleCarComponent implements OnInit, OnDestroy {
   }
 
   setDefaultPic() {
-    this.carImg = 'assets/images/car-placeholder.svg'
+    this.dealerImg = 'assets/images/logo-placeholder.jpeg'
 
   }
 
-  routeToViewDealership() {
+  routeToViewCars() {
 
   }
 
-  editCar() {
+  editDealership() {
 
   }
 
-  deleteCar() {
+  deleteDealership() {
 
   }
 

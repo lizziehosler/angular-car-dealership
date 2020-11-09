@@ -21,7 +21,6 @@ export class CarService {
    }
 
    getCarById(params) {
-     debugger
      return this.http.get<any>(`${this.carApi}/getCarById?id=${params.id}`)
    }
 }

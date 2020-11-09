@@ -23,6 +23,7 @@ import { SignupComponent } from './signup/signup.component'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { SingleCarComponent } from './cars/single-car/single-car.component';
+import { SingleDealershipComponent } from './dealerships/single-dealership/single-dealership.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SingleCarComponent } from './cars/single-car/single-car.component';
     CarCardComponent,
     SignupComponent,
     LoginComponent,
-    SingleCarComponent
+    SingleCarComponent,
+    SingleDealershipComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,44 @@
+<div *ngIf="dealership" class="card p-4">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img class="img img-fluid" [src]="dealerImg" (error)="setDefaultPic()" />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h6 class="dealer-id">
+          Dealership ID:<span class="rd-bold ml-2">{{
+            dealership.id
+          }}</span>
+        </h6>
+        <h5 class="dealer-name">{{dealership.name}} </h5>
+        <h5 class="dealer-location">{{dealership.city}}, {{dealership.state}}</h5>
+        <div style="clear: both;"></div>
+        <p class="dealer-owner">Owner: {{dealership.owner}}</p>
+      </div>
+
+    </div>
+
+  </div>
+  <div *ngIf="currentUser" class="flex ml-auto">
+    <div class="w-100 d-inline-flex">
+      <div class="flex">
+        <button class="btn btn-outline-primary" (click)="editDealership()">
+          Edit Lot
+          <fa-icon [icon]="['fas', 'pen']" size="sm" class="ml-2"></fa-icon>
+        </button>
+      </div>
+      <div class="flex ml-4">
+        <button class="btn btn-outline-primary" (click)="deleteDealership()">
+          Delete Lot
+          <fa-icon
+            [icon]="['fas', 'trash-alt']"
+            size="sm"
+            class="ml-2"
+          ></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
