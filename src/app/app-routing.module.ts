@@ -1,3 +1,4 @@
+import { NewCarComponent } from './cars/new-car/new-car.component';
 import { SingleDealershipComponent } from './dealerships/single-dealership/single-dealership.component';
 import { SingleCarComponent } from './cars/single-car/single-car.component';
 import { LoginComponent } from './login/login.component';
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'cars/new',
+    component: NewCarComponent,
     pathMatch: 'full'
   },
   {

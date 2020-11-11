@@ -24,6 +24,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { SingleCarComponent } from './cars/single-car/single-car.component';
 import { SingleDealershipComponent } from './dealerships/single-dealership/single-dealership.component';
+import { NewCarComponent } from './cars/new-car/new-car.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { NgSelectModule } from '@ng-select/ng-select';
+
+
 
 @NgModule({
   declarations: [
@@ -35,7 +40,8 @@ import { SingleDealershipComponent } from './dealerships/single-dealership/singl
     SignupComponent,
     LoginComponent,
     SingleCarComponent,
-    SingleDealershipComponent
+    SingleDealershipComponent,
+    NewCarComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,9 @@ import { SingleDealershipComponent } from './dealerships/single-dealership/singl
     FontAwesomeModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ImageCropperModule,
+    NgSelectModule
   ],
   providers: [
     CarService,
