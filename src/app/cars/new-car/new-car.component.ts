@@ -1,13 +1,13 @@
-import { Dealership } from './../../shared/models/dealership';
+import Swal from 'sweetalert2';
 import { DealershipService } from './../../dealership.service';
 import { CarService } from './../../shared/services/car.service';
 import { UserService } from './../../shared/services/user.service';
 import { Subscription, Observable } from 'rxjs';
 import { User } from './../../shared/models/user';
+import { Dealership } from './../../shared/models/dealership';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ImageCropperComponent, ImageCroppedEvent } from 'ngx-image-cropper';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-car',
@@ -175,8 +175,8 @@ export class NewCarComponent implements OnInit, OnDestroy {
     this.form
       .get('img')
       .setValue(
-        'https://car-dealership-app.s3.ca-central-1.amazonaws.com/images' +
-          name
+        'https://code-labs-one-movie-images.s3.us-east-2.amazonaws.com/images/' +
+      name
       );
     return true;
   }
