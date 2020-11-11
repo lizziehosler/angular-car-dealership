@@ -1,0 +1,96 @@
+<div class="container mb-3">
+  <div class="row mt-5">
+    <div class="col-12 mt-5 mb-5">
+      <div *ngIf="car" class="card p-4">
+        <div class="d-inline-flex w-100">
+          <div class="flex">
+            <h5 class="car-title">{{car.year}} {{car.make}} {{car.model}}</h5>
+            <h6 class="car-ids">
+              Car ID:<span class="rd-bold ml-2">{{
+                car.id
+              }}</span>
+            </h6>
+            <h6 class="car-ids">
+              Dealership ID:<span class="rd-bold ml-2">{{
+                car.dealership_id
+              }}</span>
+            </h6>
+            <div class="d-inline-flex w-100 mt-4">
+              <!-- <p class="dealership-info">
+                Lot name:
+                <span class="mr-bold ml-2">{{ dealership.name }} - {{ dealership.city}}, {{dealership.state}}</span>
+              </p> -->
+              <div class="col-12 mt-4 mb-4">
+                <p class="desc-text">Notes</p>
+                <hr/>
+                <p class="car-text">{{ car.notes }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="ml-auto flex car-img">
+            <img
+              class="img img-fluid"
+              [src]="carImg"
+              (error)="setDefaultPic()"
+            />
+          </div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Make</th>
+              <th scope="col">Model</th>
+              <th scope="col">Year</th>
+              <th scope="col">Mileage</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{{ car.id }}</th>
+              <td>{{ car.make }}</td>
+              <td>{{ car.model }}</td>
+              <td>{{ car.year }}</td>
+              <td>{{car.mileage.toLocaleString('en-US')}}</td>
+              <td>{{ car.price| currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="currentUser" class="col-12 mb-5 d-inline-flex">
+      <div class="flex">
+       <!---- <button class="btn btn-primary" (click)="routeToWriteReview()">
+          Write Review
+          <fa-icon
+            [icon]="['fas', 'star']"
+            size="sm"
+            class="ml-2 text-white"
+          ></fa-icon>
+        </button>-->
+      </div>
+      <div *ngIf="currentUser" class="flex ml-auto">
+        <div class="w-100 d-inline-flex">
+          <div class="flex">
+            <button class="btn btn-outline-primary" (click)="editCar()">
+              Edit Car
+              <fa-icon [icon]="['fas', 'pen']" size="sm" class="ml-2"></fa-icon>
+            </button>
+          </div>
+          <div class="flex ml-4">
+            <button class="btn btn-outline-primary" (click)="deleteCar()">
+              Delete Car
+              <fa-icon
+                [icon]="['fas', 'trash-alt']"
+                size="sm"
+                class="ml-2"
+              ></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,3 +1,5 @@
+import { SingleDealershipComponent } from './dealerships/single-dealership/single-dealership.component';
+import { SingleCarComponent } from './cars/single-car/single-car.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
@@ -23,6 +25,16 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'cars/:id',
+    component: SingleCarComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'dealerships/:id',
+    component: SingleDealershipComponent,
     pathMatch: 'full'
   }
 ];

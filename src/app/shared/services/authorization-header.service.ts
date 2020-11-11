@@ -17,7 +17,6 @@ export class AuthorizationHeaderService implements HttpInterceptor {
       '/users/login'
     ]
     const token = this.storage.getItem('accessToken') // grabs the token from local storage
-    //You did not have the constuser get Item defined as currentUser
     const user = this.storage.getItem('currentUser')
     let found = false
     for(let i = 0; i < blackListedRoutes.length; i ++) {
@@ -26,11 +25,9 @@ export class AuthorizationHeaderService implements HttpInterceptor {
         break;
       }
     }
-    // Need `` not '' on Bearer token
     if ( user && token && found === false) {
       const authReq = req.clone({setHeaders: { 'Authorization': `Bearer ${token}`}})
       return next.handle(authReq)
-    //  You did not have the else
     } else {
       return next.handle(req)
     }
