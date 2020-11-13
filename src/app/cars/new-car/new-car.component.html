@@ -89,9 +89,9 @@
                       <div class="col-6" *ngIf="imageChangedEvent">
                         <image-cropper [imageChangedEvent]="imageChangedEvent"
                         [maintainAspectRatio]="true"
-                        [aspectRatio]="3 / 4"
+                        [aspectRatio]="4 / 3"
                         format="png"
-                        [resizeToWidth]="181"
+                        [resizeToWidth]="300"
                         (imageCropped)="onImageCropChanged($event)"
                       ></image-cropper>
                       <button class="btn btn-outline-primary" (click)="onImageCropClicked()">
@@ -127,11 +127,12 @@
                     </label>
                   </div>
                 </div>
+
                 <div class="form-group row">
                   <div class="col-12 col-md-6 end">
                     <label class="label">Lot</label>
-                    <ng-select [ngClass]="{'is-invalid': hasError && form.get('dealership').errors}" class="form-control"
-                     formControlName="dealership"
+                    <ng-select [ngClass]="{'is-invalid': hasError && form.get('dealership_id').errors}" class="form-control"
+                     formControlName="dealership_id"
                     placeholder=""
                     [items]="dealerships$ | async"
                     bindLabel="name"

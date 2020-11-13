@@ -79,7 +79,7 @@ export class NewCarComponent implements OnInit, OnDestroy {
       year: [null, Validators.required],
       img: ['', Validators.required],
       notes: ['', Validators.required],
-      dealership: ['', Validators.required]
+      dealership_id: ['', Validators.required]
     }
   }
 
@@ -107,7 +107,7 @@ export class NewCarComponent implements OnInit, OnDestroy {
         year: form.year,
         image: form.img,
         notes: form.notes,
-        dealership: form.dealership
+        dealership_id: form.dealership_id
       }
       this.subs.add(
         this.carService.createCar(params).subscribe( data => {
@@ -164,12 +164,12 @@ export class NewCarComponent implements OnInit, OnDestroy {
   }
 
   uploadImage() {
-    let title;
-    title = this.form.get('title').value; // grabbing the title value from form
-    title = title.replace(/s/g, '-'); // replaces spaces in title w/ '-'
-    title = title.toLowerCase(); // Lower Case the title
-    const name = title
-      ? title
+    let model;
+    model = this.form.get('model').value; // grabbing the title value from form
+    model = model.replace(/s/g, '-'); // replaces spaces in title w/ '-'
+    model = model.toLowerCase(); // Lower Case the title
+    const name = model
+      ? model
       : this.generateRandomString(14, '0123456789abcd'); // sets img name key or assigns random string
     this.carService.uploadCarImage(this.croppedImage, name, this.accessKey, this.secretKey);
     this.form
