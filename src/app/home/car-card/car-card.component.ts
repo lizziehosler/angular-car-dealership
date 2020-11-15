@@ -24,7 +24,7 @@ export class CarCardComponent implements OnInit, OnChanges {
   }
 
   setDefaultPic() {
-    this.carImg = 'assets/images/car-placeholder.svg'
+    this.carImg = 'assets/images/car-placeholder.png'
   }
 
   routeToViewCar(id: number) {
