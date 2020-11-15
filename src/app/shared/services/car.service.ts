@@ -1,12 +1,10 @@
+import { Car } from './../models/car';
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Car } from '../models/car';
 import * as S3 from 'aws-sdk/clients/s3';
 import { Buffer } from 'buffer';
-
-
 
 @Injectable({
   providedIn: 'root',
@@ -60,4 +58,10 @@ export class CarService {
       }
     });
   }
+
+
+  deleteCar(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.carApi}/destroy?id=${id}`)
+  }
+
 }
