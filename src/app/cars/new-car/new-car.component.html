@@ -1,0 +1,334 @@
+<div class="container mb-3">
+  <div class="row">
+    <div class="col-12 mt-5 pt-lg-5">
+      <form class="form p-3 pt-5 p-lg-5" [formGroup]="form">
+        <ngb-alert
+          class="text-center"
+          *ngIf="errorMsg"
+          type="danger"
+          (close)="errorMsg = null"
+          >{{ errorMsg }}
+        </ngb-alert>
+        <h2 class="mb-5">Add a New Car</h2>
+        <div class="form-group row">
+          <div class="col-12 col-md-6 end">
+            <label class="label">Make</label>
+            <input
+              [ngClass]="{ 'is-invalid': hasError && form.get('make').errors }"
+              class="form-control"
+              type="text"
+              formControlName="make"
+              placeholder=""
+            />
+            <label
+              class="form-error"
+              *ngIf="hasError && form.get('make').errors"
+            >
+              <span
+                class="text-danger"
+                *ngIf="form.get('make').errors['required']"
+              >
+                Car make is required!
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-12 col-md-6 end">
+            <label class="label">Model</label>
+            <input
+              [ngClass]="{ 'is-invalid': hasError && form.get('model').errors }"
+              class="form-control"
+              type="text"
+              formControlName="model"
+              placeholder=""
+            />
+            <label
+              class="form-error"
+              *ngIf="hasError && form.get('model').errors"
+            >
+              <span
+                class="text-danger"
+                *ngIf="form.get('model').errors['required']"
+              >
+                Car model is required!
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-12 col-md-6 end">
+            <label class="label">Year</label>
+            <input
+              [ngClass]="{ 'is-invalid': hasError && form.get('year').errors }"
+              class="form-control"
+              type="number"
+              formControlName="year"
+              placeholder=""
+            />
+            <label
+              class="form-error"
+              *ngIf="hasError && form.get('year').errors"
+            >
+              <span
+                class="text-danger"
+                *ngIf="form.get('year').errors['required']"
+              >
+                Model year is required!
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-12 col-md-6 end">
+            <label class="label">Color</label>
+            <input
+              [ngClass]="{ 'is-invalid': hasError && form.get('color').errors }"
+              class="form-control"
+              type="text"
+              formControlName="color"
+              placeholder=""
+            />
+            <label
+              class="form-error"
+              *ngIf="hasError && form.get('color').errors"
+            >
+              <span
+                class="text-danger"
+                *ngIf="form.get('color').errors['required']"
+              >
+                Car color is required!
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-12 col-md-6 end">
+            <label class="label">Mileage</label>
+            <input
+              [ngClass]="{
+                'is-invalid': hasError && form.get('mileage').errors
+              }"
+              class="form-control"
+              type="number"
+              formControlName="mileage"
+              placeholder=""
+            />
+            <label
+              class="form-error"
+              *ngIf="hasError && form.get('mileage').errors"
+            >
+              <span
+                class="text-danger"
+                *ngIf="form.get('mileage').errors['required']"
+              >
+                Mileage is required!
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-12 col-md-6 end">
+            <label class="label">Price</label>
+            <input
+              [ngClass]="{ 'is-invalid': hasError && form.get('price').errors }"
+              class="form-control"
+              type="number"
+              formControlName="price"
+              placeholder=""
+            />
+            <label
+              class="form-error"
+              *ngIf="hasError && form.get('price').errors"
+            >
+              <span
+                class="text-danger"
+                *ngIf="form.get('price').errors['required']"
+              >
+                Price is required!
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-12">
+            <label
+              class="label"
+              [ngClass]="{ 'text-danger': hasError && form.get('img').errors }"
+              >Image Upload</label
+            >
+            <div class="row">
+              <div class="col-6">
+                <button class="btn btn-primary mt-4" (click)="openFileInput()">
+                  <fa-icon
+                    [icon]="['fas', 'upload']"
+                    size="lg"
+                    class="text-white fa-upload"
+                  ></fa-icon>
+                  <span class="ml-2">Select Image</span>
+                  <input
+                    #fileInput
+                    type="file"
+                    (change)="onSelectImage($event)"
+                    style="display: none"
+                  />
+                </button>
+              </div>
+              <div
+                class="col-6"
+                *ngIf="!imageChangedEvent && form.get('img').value"
+              >
+                <img
+                  class="upload-icon"
+                  *ngIf="form.get('img').value"
+                  [src]="form.get('img').value"
+                  #loadedLogo
+                  alt="Car Image"
+                />
+              </div>
+              <div class="col-6" *ngIf="imageChangedEvent">
+                <image-cropper
+                  [imageChangedEvent]="imageChangedEvent"
+                  [maintainAspectRatio]="true"
+                  [aspectRatio]="4 / 3"
+                  format="png"
+                  [resizeToWidth]="300"
+                  (imageCropped)="onImageCropChanged($event)"
+                >
+                </image-cropper>
+                <button
+                  class="btn btn-outline-primary"
+                  (click)="onImageCropClicked()"
+                >
+                  Crop
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label">Notes</label>
+          <textarea
+            rows="5"
+            [ngClass]="{ 'is-invalid': hasError && form.get('notes').errors }"
+            class="form-control"
+            type="textarea"
+            formControlName="notes"
+            placeholder=""
+          ></textarea>
+          <label
+            class="form-error"
+            *ngIf="hasError && form.get('notes').errors"
+          >
+            <span
+              class="text-danger"
+              *ngIf="form.get('notes').errors['required']"
+            >
+              Please include any important details about this car!
+            </span>
+          </label>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-12 col-md-6 end">
+            <label class="label">Lot</label>
+            <ng-select
+              [ngClass]="{
+                'is-invalid': hasError && form.get('dealership_id').errors
+              }"
+              class="form-control"
+              formControlName="dealership_id"
+              placeholder=""
+              [items]="dealerships$ | async"
+              bindLabel="name"
+              autofocus
+              bindValue="id"
+            >
+            </ng-select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- md & lg -->
+    <div class="col-12 d-none d-md-inline-flex mt-5 mb-5 btn-row">
+      <div class="flex">
+        <button
+          type="submit"
+          class="btn btn-primary btn-block"
+          (click)="submitForm()"
+        >
+          CREATE CAR
+          <fa-icon
+            *ngIf="submitting"
+            [icon]="['fas', 'spinner']"
+            size="lg"
+            class="ml-2 fa-spinner"
+            spin="true"
+          >
+          </fa-icon>
+        </button>
+      </div>
+      <div class="flex ml-4">
+        <button
+          type="submit"
+          class="btn btn-outline-primary btn-block"
+          (click)="cancel()"
+        >
+          CANCEL
+          <fa-icon
+            *ngIf="submitting"
+            [icon]="['fas', 'spinner']"
+            size="lg"
+            class="ml-2 fa-spinner"
+            spin="true"
+          >
+          </fa-icon>
+        </button>
+      </div>
+    </div>
+    <!-- end of md & lg -->
+    <!-- sm -->
+    <div class="col-12 d-block d-md-none mt-5 mb-5">
+      <div class="row">
+        <div class="col-6">
+          <button
+            type="submit"
+            class="btn btn-primary btn-block"
+            (click)="submitForm()"
+          >
+            CREATE CAR
+            <fa-icon
+              *ngIf="submitting"
+              [icon]="['fas', 'spinner']"
+              size="lg"
+              class="ml-2 fa-spinner"
+              spin="true"
+            >
+            </fa-icon>
+          </button>
+        </div>
+        <div class="col-6">
+          <button
+            type="submit"
+            class="btn btn-outline-primary btn-block"
+            (click)="cancel()"
+          >
+            CANCEL
+            <fa-icon
+              *ngIf="submitting"
+              [icon]="['fas', 'spinner']"
+              size="lg"
+              class="ml-2 fa-spinner"
+              spin="true"
+            >
+            </fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- end of sm -->
+  </div>
+</div>
