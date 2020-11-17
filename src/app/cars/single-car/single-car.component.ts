@@ -38,7 +38,6 @@ export class SingleCarComponent implements OnInit, OnDestroy {
   }
   retrieveCarById(id: number) {
     const params = { id: id };
-    console.log(params);
     this.subs.add(
       this.carService.getCarById(params).subscribe(
         (data) => {
