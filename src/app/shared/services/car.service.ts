@@ -59,6 +59,9 @@ export class CarService {
     });
   }
 
+  updateCar(params) {
+    return this.http.patch<any>(`${this.carApi}/update`, params)
+  }
 
   deleteCar(id: number): Observable<void> {
     return this.http.delete<void>(`${this.carApi}/destroy?id=${id}`)

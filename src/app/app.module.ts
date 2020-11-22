@@ -27,6 +27,7 @@ import { SingleDealershipComponent } from './dealerships/single-dealership/singl
 import { NewCarComponent } from './cars/new-car/new-car.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { EditCarComponent } from './cars/edit-car/edit-car.component';
 
 
 
@@ -41,7 +42,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     LoginComponent,
     SingleCarComponent,
     SingleDealershipComponent,
-    NewCarComponent
+    NewCarComponent,
+    EditCarComponent
   ],
   imports: [
     BrowserModule,
