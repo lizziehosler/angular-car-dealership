@@ -6,6 +6,7 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { EditCarComponent } from './cars/edit-car/edit-car.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,11 @@ const routes: Routes = [
   {
     path: 'dealerships/:id',
     component: SingleDealershipComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'cars/:carId/edit',
+    component: EditCarComponent,
     pathMatch: 'full'
   }
 ];

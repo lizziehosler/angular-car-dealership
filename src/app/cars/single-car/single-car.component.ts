@@ -62,7 +62,9 @@ export class SingleCarComponent implements OnInit, OnDestroy {
 
   routeToViewDealership() {}
 
-  editCar() {}
+  routeToEditCar(id: number) {
+    this.router.navigate([`cars/${this.car.id}/edit`])
+  }
 
   deleteCar() {
     this.subs.add(
