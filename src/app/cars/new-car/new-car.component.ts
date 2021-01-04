@@ -58,8 +58,8 @@ export class NewCarComponent implements OnInit, OnDestroy {
     this.subs.add(
       this.carService.getUploadCredentials().subscribe(data => {
         if (data) {
-          this.accessKey = data.accessKey
-          this.secretKey = data.secretKey
+          this.accessKey = data.accessKey;
+          this.secretKey = data.secretKey;
         }
       }, error => {
         if (error) {
